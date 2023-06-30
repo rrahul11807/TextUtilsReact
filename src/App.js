@@ -5,11 +5,8 @@ import Navbar from './components/Navbar.js'
 import TextForm from './components/TextForm.js'
 import Alert from './components/Alert';
 import {
-  createBrowserRouter,
-  RouterProvider,
   Route,
   Routes,
-  Link,
 } from "react-router-dom";
 
 
@@ -31,18 +28,10 @@ function App() {
       setMode('dark')
       document.body.style.backgroundColor = "#01386e";
       showAlert('Dark mode has been enabled', 'success')
-      document.title ="TextUtis DarkMode"
-      /*setInterval(() => {
-        document.title = "TextUtis is Amazing Mode";
-      }, 2000);
-      setInterval(() => {
-        document.title = "Install TextUtis now";
-      }, 1250);*/
     }else{
       setMode('light')
       document.body.style.backgroundColor = 'white';
       showAlert("Light mode has been enabled", "success");
-      //document.title = "TextUtis LightMode";
     }
   }
   return (
@@ -57,16 +46,17 @@ function App() {
       <div className="container my-3">
         <Routes>
           <Route
-            exact path="/"
+            exact
+            path="/"
             element={
               <TextForm
-                heading="Enter the text to analyze below"
+                heading="Try TextUtils - Word Counter, Character Counter, Remove Extra Spaces "
                 mode={mode}
-                ShowAlert={showAlert}
+                showAlert={showAlert}
               />
             }
           />
-          <Route exactpath="/about" element={<About />} />
+          <Route exact path="/about" element={<About mode={mode} />} />
         </Routes>
       </div>
     </>
